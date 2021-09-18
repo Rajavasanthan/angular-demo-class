@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Create User</h2>
+        </div>
+    </div>
+
+    <form [formGroup]="userForm" (ngSubmit)="submit()">
+        <div class="row">
+            <div class="col-lg-6">
+                <label for="">User Name</label>
+                <input type="text" formControlName="username" class="form-control">
+                <span *ngIf="!userForm.get('username').valid" class="invalid">Please enter username</span>
+            </div>
+            <div class="col-lg-6">
+                <label for="">Email</label>
+                <input type="text" formControlName="email" class="form-control">
+                <span *ngIf="!userForm.get('email').valid" class="invalid">Please enter Email</span>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-lg-6">
+                <label for="">Phone</label>
+                <input type="text" formControlName="phone" class="form-control">
+            </div>
+            <div class="col-lg-6">
+                <label for="">Country</label>
+                <select class="form-control" formControlName="country">
+                    <option value="IN">India</option>
+                    <option value="US">US</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-6">
+                <input type="submit" class="btn btn-sm btn-primary mr-2" value="Submit">
+                <input type="reset" class="btn btn-sm btn-danger" value="Submit">
+            </div>
+        </div>
+    </form>
+</div>
