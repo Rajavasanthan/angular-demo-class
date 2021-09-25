@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user',
@@ -6,43 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  userData = [
-    {
-      name: "Person 1",
-      position: "CEO",
-      office: "Google",
-      age: 20,
-      startDate: "2021-02-23",
-      salary: 20000
-    },
-    {
-      name: "Person 2",
-      position: "CTO",
-      office: "Apple",
-      age: 44,
-      startDate: "2021-02-23",
-      salary: 34000
-    },
-    {
-      name: "Person 2",
-      position: "CTO",
-      office: "Apple",
-      age: 44,
-      startDate: "2021-02-23",
-      salary: 34000
-    },
-    {
-      name: "Person 5",
-      position: "CTO",
-      office: "Apple",
-      age: 44,
-      startDate: "2021-02-23",
-      salary: 34000
-    }
-  ];
-  constructor() { }
+  userData: any;
+  constructor(private userSerive: UserService) { }
 
   ngOnInit(): void {
+    this.loadData()
+  }
+
+  loadData() {
+    this.userSerive.getUsers().subscribe((data) => {
+      this.userData = data;
+    })
+  }
+
+  deleteData(id: number) {
+    let res = confirm("Are you sure do you want to delete?")
+    if(res){
+      this.userSerive.deleteUserById(id).subscribe(() => {
+        this.loadData()
+      })
+    }
   }
 
 }

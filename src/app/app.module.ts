@@ -10,6 +10,8 @@ import { CardComponent } from './card/card.component';
 import { UserComponent } from './user/user.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     CardComponent,
     UserComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

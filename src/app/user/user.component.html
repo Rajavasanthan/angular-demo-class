@@ -13,33 +13,32 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Country</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Country</th>
+                        <th>Action</th>
                     </tr>
                 </tfoot>
                 <tbody>
                     <!-- Structural Directive -->
                     <tr *ngFor="let user of userData">
-                        <td>{{user.name}}</td>
-                        <td>{{user.position}}</td>
-                        <td>{{user.office}}</td>
-                        <!-- Structural Directive -->
-                        <td [ngClass]="{'showGreen':user.age > 35}">{{user.age}}</td>
-                        <td>{{user.startDate}}</td>
-                        <td>{{user.salary}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.phone}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.country}}</td>
+                        <td>
+                            <button [routerLink]="['/edit-user',user.id]" class="btn btn-sm btn-primary">Edit</button>
+                            <button class="btn btn-sm" style="color: red;" (click)="deleteData(user.id)">Delete</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
