@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 
 @Component({
@@ -12,7 +12,14 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData()
+    console.log("Init")
   }
+
+  ngAfterViewInit(){
+    console.log("Hellooo")
+  }
+
+  
 
   loadData() {
     this.userSerive.getUsers().subscribe((data) => {
@@ -27,6 +34,10 @@ export class UserComponent implements OnInit {
         this.loadData()
       })
     }
+  }
+
+  ngOnDestroy(){
+    console.log("Destroy")
   }
 
 }
